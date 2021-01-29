@@ -64,17 +64,20 @@ var fight = function() {
         var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
         // if yes (true), leave fight
-        if (confirmSkip) {
+      if (confirmSkip) {
         window.alert(playerName + " has decided to skip this fight. Goodbye!");
         // subtract money from playerMoney for skipping
         playerMoney = playerMoney - 2;
-    }
+      }
     // if no (false), ask question again by running fight() again
-    else {
+     else {
         fight();
-    }
-
-};  
+    } 
+    // if the player didnt choose 1 or 2 in prompt
+    } else {
+        window.alert("You need to pick a valid option. Try again!");
+  }
+}; 
 fight();
 
 
