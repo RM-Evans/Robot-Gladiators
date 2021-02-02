@@ -16,13 +16,13 @@
 
 // function to start a new game
 var startGame = function () {
-    //debugger;
+    
     // reset player stats
     playerInfo.reset(); 
 
     // fight each enemy robot by looping over them and fighting them one at a time
     for (var i = 0; i < enemyInfo.length; i++) {
-        //store after last round fix
+        //store after last round /-=
         var isLastRound = i === enemyInfo.length - 1 
         // if player is still alive, keep fight next enemy
         if (playerInfo.health > 0) {
@@ -190,8 +190,18 @@ var randomNumber = function () {
     return value;
 };
 
+var getPlayerName = function() {
+    var name = "";
+
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+
+    return name;
+}
+
 var playerInfo = {
-    Name: window.prompt("What is your robot's name?"),
+    Name: getPlayerName(),
     Health: 100,
     Attack: 25,
     Money: 10,
