@@ -22,7 +22,7 @@ var startGame = function () {
 
     // fight each enemy robot by looping over them and fighting them one at a time
     for (var i = 0; i < enemyInfo.length; i++) {
-        //store last round fix
+        //store after last round fix
         var isLastRound = i === enemyInfo.length - 1 
         // if player is still alive, keep fight next enemy
         if (playerInfo.health > 0) {
