@@ -54,7 +54,7 @@ var endGame = function () {
     window.alert("The game has now ended. Let's see how you did!");
 
     //if player is still alive, player wins!
-    if (playerInfo.Health > 0) {
+    if (playerInfo.health > 0) {
         window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
     }
     else {
@@ -102,7 +102,7 @@ var fightOrSkip = function() {
 var fight = function (enemy, isLastRound) {
 
     //repeat and execute as long as enemy is alive
-    while (enemy.health > 0 && playerInfo.Health > 0) {
+    while (enemy.health > 0 && playerInfo.health > 0) {
         //fight or skip?
         if(fightOrSkip()) {
             //if true, leave fight by breaking
