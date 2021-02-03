@@ -23,7 +23,7 @@ var startGame = function () {
     // fight each enemy robot by looping over them and fighting them one at a time
     for (var i = 0; i < enemyInfo.length; i++) {
         //store after last round /-=
-        var isLastRound = i === enemyInfo.length - 1 
+        var isLastRound = i === (enemyInfo.length - 1) 
         // if player is still alive, keep fight next enemy
         if (playerInfo.health > 0) {
             // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
@@ -75,7 +75,6 @@ var endGame = function () {
 var fightOrSkip = function() {
     //ask player if theyd like to fight or skip using fightOrSkip function
     var promptFight = window.prompt('Would you like to fight or skip this battle? Enter "FIGHT" or "SKIP" to choose.');
-
     //conditional recursive function call
     if (promptFight === "" || promptFight === null) {
         window.alert("You need provide a valid answer! Please try again!");
@@ -90,12 +89,14 @@ var fightOrSkip = function() {
 
         //if true, leave fight
         if (confirmSkip) {
-            windows.alert(playerInfo.name + " has decided to skip this fight. Goodbye Loser!");
+            window.alert(playerInfo.name + " has decided to skip this fight. Goodbye Loser!");
             //subtract money for skipping 
             playerInfo.playerMoney = playerInfo.money - 10;
+            console.log("something")
             return true;
         }
     } 
+    
 }
 
 var fight = function (enemy, isLastRound) {
@@ -217,10 +218,10 @@ var getPlayerName = function() {
 }
 
 var playerInfo = {
-    Name: getPlayerName(),
-    Health: 100,
-    Attack: 25,
-    Money: 10,
+    name: getPlayerName(),
+    health: 100,
+    attack: 25,
+    money: 10,
     reset: function () {
         this.health = 100;
         this.money = 10;
@@ -266,10 +267,10 @@ var enemyInfo = [
         attack: randomNumber(10, 14)
     }
 ];
-console.log(enemyInfo);
-console.log(enemyInfo[0]);
-console.log(enemyInfo[0].name);
-console.log(enemyInfo[0]['attack']);
+// console.log(enemyInfo);
+// console.log(enemyInfo[0]);
+// console.log(enemyInfo[0].name);
+// console.log(enemyInfo[0]['attack']);
 
 
 startGame();
