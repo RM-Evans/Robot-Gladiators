@@ -53,6 +53,21 @@ var startGame = function () {
 // function to end entire game
 var endGame = function () {
     window.alert("The game has now ended. Let's see how you did!");
+    //check localStorage for high score, if not there, use 0
+    var highScore = localStorage.getItem("highscore");
+    if (highScore === null) {
+        highScore = 0;
+    }
+    //if player have more money than the high schore, player has new high score
+    if(playerInfo.money > highScore) {
+        localStorage.setItem("highscore", playerInfo.money);
+        localStorage.setItem("name", playerInfo.name);
+
+        alert(playerInfo.name + " now has a highscore of " + playerInfo.money + "!");
+    } else {
+        alert(playerInfo.name + " did not beat the high score of" + highScore + ". Maybe next time?");
+    }
+
 
     //if player is still alive, player wins!
     if (playerInfo.health > 0) {
