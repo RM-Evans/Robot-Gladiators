@@ -72,26 +72,42 @@ var endGame = function () {
 
 };
 
+var fightOrSkip = function() {
+    //ask player if theyd like to fight or skip using fightOrSkip function
+    var promptFight = window.prompt('Would you like to fight or skip this battle? Enter "FIGHT" or "SKIP" to choose.');
+
+    //conditional recursive function call
+    if (promptFight === "" || promptFight === null) {
+        window.alert("You need provide a valid answer! Please try again!");
+        return fightOrSkip();
+    }
+    //return lowercase
+    promptFight = promptFight.toLowerCase();
+    //if "skip" confirm and stop loop
+    if(promptFight === "skip") {
+        //CONFIRM SKIP
+        var confirmSkip = window.confirm("Are you sure you'd like to skip");
+
+        //if true, leave fight
+        if (confirmSkip) {
+            windows.alert(playerInfo.name + " has decided to skip this fight. Goodbye Loser!");
+            //subtract money for skipping 
+            playerInfo.playerMoney = playerInfo.money - 10;
+            return true;
+        }
+    } 
+}
+
 var fight = function (enemy, isLastRound) {
 
     //repeat and execute as long as enemy is alive
     while (enemy.health > 0 && playerInfo.Health > 0) {
         //fight or skip?
-        var promptFight = window.prompt( "Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
-        // if player chooses to skip, then skip
-        if (promptFight === "skip" || promptFight === "SKIP") {
-            // confirm player wants to skip
-            var confirmSkip = window.confirm("Are you sure you'd like to quit?");
-
-            if (confirmSkip) {
-                window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
-                // subtract money from playerInfo.money for skipping
-                playerMoney = playerMoney - 10;
-                    console.log("playerInfo.money", playerInfo.money);
-                shop();
-                break;
-            }
+        if(fightOrSkip()) {
+            //if true, leave fight by breaking
+            break;
         }
+        
         
         var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
